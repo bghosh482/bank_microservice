@@ -10,4 +10,21 @@ public interface IAccountsService {
      * @param customerDto The data transfer object containing customer details
      */
     void createAccount(CustomerDto customerDto);
+    /**
+     * Fetches the account details for the given mobile number.
+     *
+     * @param mobileNumber The mobile number to fetch the account for
+     * @return The customer details if the customer exists, or an empty object if the customer does not exist.
+     */
+    CustomerDto fetchAccount(String mobileNumber);
+
+    /**
+     * Updates the account details for the given customer.
+     *
+     * @param customerDto The data transfer object containing customer details
+     * @return True if the customer is updated successfully, false if the customer does not exist.
+     */
+    boolean updateAccount(CustomerDto customerDto);
+
+
 }

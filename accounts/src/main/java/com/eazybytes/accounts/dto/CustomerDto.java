@@ -18,4 +18,6 @@ public class CustomerDto {
     private String email;
 
     private String mobileNumber;
+
+    private AccountsDto accountsDto;
 }
