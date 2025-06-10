@@ -15,7 +15,7 @@ import com.eazybytes.accounts.service.IAccountsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+
 import java.util.Optional;
 import java.util.Random;
 
@@ -40,8 +40,6 @@ public class AccountsServiceImpl implements IAccountsService {
             throw new CustomerAlreadyExitsException("Customer already registered with given mobileNumber"
             + customerDto.getMobileNumber());
         }
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("Annonymous");
         customerRepository.save(customer);
         accountsRepository.save(createNewAccount(customer));
     }
@@ -61,12 +59,10 @@ public class AccountsServiceImpl implements IAccountsService {
         newAccounts.setAccountNumber(randomAccountNumber);
         newAccounts.setAccountType(AccountConstants.SAVINGS);
         newAccounts.setBranchAddress(AccountConstants.ADDRESS);
-        newAccounts.setCreatedAt(LocalDateTime.now());
-        newAccounts.setCreatedBy("Annonymous");
         return newAccounts;
     }
 
-    /**
+        /**
      * Fetches the account details for the given mobile number.
      *
      * @param mobileNumber The mobile number to fetch the account for
@@ -111,6 +107,23 @@ public class AccountsServiceImpl implements IAccountsService {
         }
 
         return isUpdated;
+    }
+
+    /**
+     * Deletes the account associated with the given mobile number.
+     *
+     * @param mobileNumber The mobile number of the account to be deleted
+     * @return True if the account is deleted successfully, false if the account does not exist.
+     */
+    @Override
+    public boolean deleteAccount(String mobileNumber) {
+
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> {
+            throw new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber);
+        });
+        accountsRepository.deleteByCustomerId(customer.getCustomerId());
+        customerRepository.deleteById(customer.getCustomerId());
+        return true;
     }
 
 }

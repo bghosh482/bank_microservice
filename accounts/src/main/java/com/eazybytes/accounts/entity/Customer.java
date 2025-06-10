@@ -6,7 +6,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer extends BaseEntity {
