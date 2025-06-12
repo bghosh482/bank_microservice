@@ -1,5 +1,4 @@
-package com.eazybytes.accounts.entity;
-
+package com.eazybytes.cards.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -15,19 +14,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@ToString
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@Getter @Setter @ToString
 public class BaseEntity {
 
     @CreatedDate
-    @Column (updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @CreatedBy
-    @Column (updatable = false)
+    @Column(updatable = false)
     private String createdBy;
 
     @LastModifiedDate
