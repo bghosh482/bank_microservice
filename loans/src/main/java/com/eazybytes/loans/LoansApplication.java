@@ -12,6 +12,7 @@ import com.eazybytes.loans.dto.LoansContactInfoDto;
 @OpenAPIDefinition
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
 @EnableConfigurationProperties(value = {LoansContactInfoDto.class})
+
 public class LoansApplication {
 
     /**

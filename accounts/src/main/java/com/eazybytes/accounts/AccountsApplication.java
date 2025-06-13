@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableConfigurationProperties(value = {AccountContactInfoDto.class})
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
+
 @OpenAPIDefinition(
 		info =@Info(
 				title = "Accounts Microservice",

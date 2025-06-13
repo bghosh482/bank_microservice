@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
 @SpringBootApplication
 @EnableConfigurationProperties(value = {CardContactInfoDto.class})
+
 public class CardsApplication {
 
 

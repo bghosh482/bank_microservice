@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
-@EnableJpaRepositories("com.eazybytes.loans.repository")
+
 public class LoansController {
 
     private ILoansService iLoansService;
