@@ -13,6 +13,11 @@ public interface AccountsRepository extends JpaRepository<Accounts, Long> {
     Optional<Accounts> findByCustomerId(Long customerId);
 
 
+    /**
+     * Deletes all accounts associated with the given customerId.
+     *
+     * @param customerId The ID of the customer whose accounts are to be deleted.
+     */
     @Transactional
     @Modifying
     void deleteByCustomerId(Long customerId);
